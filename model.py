@@ -56,7 +56,7 @@ class ProstateClassifier(nn.Module):
         resnet = nn.Sequential(*list(resnet.children())[0:-1])
         
         self.classifier = nn.Sequential(*[
-            backbone,
+            resnet,
             nn.Flatten(),
             nn.BatchNorm1d(2048),
             nn.Linear(2048, 512),
